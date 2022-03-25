@@ -2,9 +2,9 @@
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        string[] testString = {"flower","flow","flight","Flown"};
+        //string[] testString = {"flower","flow","flight","Flown"};
         //string[] testString = {"dog","racecar","car"};
-        //string[] testString = {""};
+        string[] testString = {"a"};
         var sortedString = testString.OrderBy(a => a.Length).ToArray();
         string test = program.LongestCommonPrefix(sortedString);
         Console.WriteLine("longest substring :" +test);   
@@ -12,18 +12,16 @@ public class Program{
    
     public string LongestCommonPrefix(string[] strs) {
         
-        bool lengthOver200 = strs.Where(a => a.Length > 200).Any();
-        string longestMatch= string.Empty;
-        if(lengthOver200){
-            return string.Empty;
-        }else
-        {
-            for(int i = 0; i < strs.Length; i++){
-                for(int j = i + 1; j < strs.Length; j++){
-                    longestMatch = commonPrefixUtil(strs[i],strs[j]);    
-            }
-        }
-        return longestMatch; 
+        if(strs.Length == 1 && string.IsNullOrEmpty(strs[0])) return "";
+        else if(strs.Length == 1 && !string.IsNullOrEmpty(strs[0])) return strs[0];
+        else{
+              List<string> longestMatches = new List<string>();
+                for(int i = 0; i < strs.Length; i++){
+                    for(int j = i + 1; j < strs.Length; j++){
+                        longestMatches.Add(commonPrefixUtil(strs[i],strs[j]));
+                    }
+                }
+            return longestMatches.OrderBy(x => x.Length).FirstOrDefault();  
         }
     }
     public int GetLongestMatchNumberBetweenTwoString(string s1, string s2){
@@ -56,7 +54,7 @@ public class Program{
             }
             result += str1[i];
         }
- 
+        Console.WriteLine($"Matched part for string {str1} and {str2} is:  {result}");
         return (result);
     }
 }
