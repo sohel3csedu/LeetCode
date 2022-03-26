@@ -3,21 +3,13 @@ public class Program{
     public static void Main(string[] args){
         Program program = new Program();
         
-        int palindrome = 22222222;
-        var test = palindrome.ToString().ToArray();
-        bool isPalindrome = IsPalindrome(palindrome);
+        string inputValue = "(){}";
+        bool isPalindrome = IsValid(inputValue);
         Console.WriteLine("9_Palindrome:Start "+isPalindrome);   
     }
 
-    private static bool IsPalindrome(int x)
-    {
-        int temp = x;
-        int reversedNumber = 0;
-        while(temp > 0){
-            reversedNumber = temp % 10 + reversedNumber * 10;
-            temp = temp /10;
-        }
-        return reversedNumber == x;
+    public static bool IsValid(string s) {
+        return false;
     }
 
 }
