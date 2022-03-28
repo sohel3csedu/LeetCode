@@ -11,8 +11,8 @@ public class Program{
      int left_index = 1; 
      for(int right_index = 1; right_index < nums.Length; right_index++){
          if(nums[right_index] != nums[right_index-1]){
-             nums[left_index] = nums[right_index];
-             left_index++;
+             nums[left_index] = nums[right_index]; //updating the values in array
+             left_index++; //shifting the left pointer
          }
      }
               
