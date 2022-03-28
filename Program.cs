@@ -3,11 +3,13 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        
-    
-        //Console.WriteLine("21_Merge_Two sorted list:Start "+MergeTwoLists(list1,list2));   
+        int[] nums = {1,1,2};
+
+        Console.WriteLine("26_RemoveDuplicateFromAnSortedArray:Start "+RemoveDuplicates(nums));   
     }
-  public int RemoveDuplicates(int[] nums) {
+  public static int RemoveDuplicates(int[] nums) {
+     
+     
      return 0;   
     }
 }
