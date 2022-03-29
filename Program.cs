@@ -9,27 +9,38 @@ public class Program{
         
         // int[] nums = {5,4,-1,7,8};
 
-        Console.WriteLine("53_Maximum_Subarray():Start ");
+        Console.WriteLine("53_Maximum_Subarray():Start "+MaxSubArray(nums));
     }
     public static int MaxSubArray(int[] nums) {
         
+        if(nums.Length == 1 ) return nums[0];
+        if(nums.Length == 0 ) return 0;
+        int midPoint = (nums.Length)/2;
+        int leftMaxSum = getLeftMaxSum(nums,0,midPoint);
+        int rightMaxSum = getRightMaxSum(nums,midPoint+1,nums.Length-1);
+        
         return 0;
     }
-    public int calculateMaxSubArray(int[] nums, int i, int j){
-        if(i == j ) return nums[i];
-        int midPoint = (i+j)/2;
-        int leftMaxSum = getLeftMaxSum(nums,i,j,midPoint);
-        int rightMaxSum = int.MaxValue;
-        
-
+    private static int getRightMaxSum(int[] nums, int startIndex, int midPoint)
+    {
+        int rightMaxSum = int.MinValue;
+        int sum = 0;
+        for(int l = midPoint+1;l <= startIndex; l++){
+            sum = sum+ nums[l];
+            if(sum > rightMaxSum){
+                rightMaxSum = sum;
+            }
+        }
+        return rightMaxSum;
     }
-    public int getLeftMaxSum(int[] nums,int i, int j, int midPoint){
+    public static int getLeftMaxSum(int[] nums,int startIndex, int midPoint){
         int leftMaxSum = int.MinValue;
         int sum = 0;
-        for(int l = i;l<=midPoint;l++){
+        for(int l = startIndex;l<=midPoint;l++){
             sum+=nums[l];
             if(sum > leftMaxSum)
                 leftMaxSum = sum;
         }
+        return leftMaxSum;
     }
 }
