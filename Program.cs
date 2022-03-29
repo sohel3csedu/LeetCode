@@ -3,44 +3,33 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        int[] nums = {1,3,5,6};
-        int target = 7;
-
-        // int[] nums = {1,3,5,6,8,10,12};
-        // int target = 15;
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
         
-        // int[] nums = {1,3,5,6};
-        // int target = 5;
+        // int[] nums = {1};
+        
+        // int[] nums = {5,4,-1,7,8};
 
-        Console.WriteLine("35_Implement_SearchInsert():Start "+SearchInsert(nums,target));
+        Console.WriteLine("53_Maximum_Subarray():Start ");
     }
-   public static int SearchInsert(int[] nums, int target) {
-       
-       int position = binarySearchRecursive(nums,target,0,nums.Length -1);
-        if(position == -1){
-            for(int i = 0; i < nums.Length; i++){
-                if(target > nums[nums.Length -1]){
-                    return nums.Length;
-                }
-                else if(target  < nums[i]){
-                    return i;
-                }
-        }
-       }
-       
-       return position;
+    public static int MaxSubArray(int[] nums) {
+        
+        return 0;
     }
-    public static int binarySearchRecursive(int[]nums, int target,int left,int right ){
-        if(left > right){
-            return -1;
-        }
-        int midPoint = (left + right) / 2;
-        if(nums[midPoint] == target){
-            return midPoint;
-        }else if(target < nums[midPoint]){
-            return binarySearchRecursive(nums,target,left,midPoint-1);
-        }else{
-            return binarySearchRecursive(nums,target,midPoint+1,right);
+    public int calculateMaxSubArray(int[] nums, int i, int j){
+        if(i == j ) return nums[i];
+        int midPoint = (i+j)/2;
+        int leftMaxSum = getLeftMaxSum(nums,i,j,midPoint);
+        int rightMaxSum = int.MaxValue;
+        
+
+    }
+    public int getLeftMaxSum(int[] nums,int i, int j, int midPoint){
+        int leftMaxSum = int.MinValue;
+        int sum = 0;
+        for(int l = i;l<=midPoint;l++){
+            sum+=nums[l];
+            if(sum > leftMaxSum)
+                leftMaxSum = sum;
         }
     }
 }
