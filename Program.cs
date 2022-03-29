@@ -4,7 +4,7 @@ public class Program{
     public static void Main(string[] args){
         Program program = new Program();
         
-        Console.WriteLine("28_ImplementStrStr():Start "+StrStr("","al"));
+        Console.WriteLine("28_ImplementStrStr():Start "+StrStr("halal","al"));
     }
    public static int StrStr(string haystack, string needle) {
         if(needle.Length == 0) return 0;
