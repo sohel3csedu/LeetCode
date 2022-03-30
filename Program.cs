@@ -17,15 +17,16 @@ public class Program{
         if(nums.Length == 0 ) return 0;
         int midPoint = (nums.Length)/2;
         int leftMaxSum = getLeftMaxSum(nums,0,midPoint);
-        int rightMaxSum = getRightMaxSum(nums,midPoint+1,nums.Length-1);
-        
-        return 0;
+        int rightMaxSum = getRightMaxSum(nums,midPoint,nums.Length-1);
+        int maxLeftRight = Math.Max(leftMaxSum,rightMaxSum);
+        int result = Math.Max(maxLeftRight,leftMaxSum+rightMaxSum);
+        return result;
     }
-    private static int getRightMaxSum(int[] nums, int startIndex, int midPoint)
+    private static int getRightMaxSum(int[] nums, int startIndex, int lastPoint)
     {
         int rightMaxSum = int.MinValue;
         int sum = 0;
-        for(int l = midPoint+1;l <= startIndex; l++){
+        for(int l = startIndex;l <= lastPoint; l++){
             sum = sum+ nums[l];
             if(sum > rightMaxSum){
                 rightMaxSum = sum;
@@ -36,10 +37,11 @@ public class Program{
     public static int getLeftMaxSum(int[] nums,int startIndex, int midPoint){
         int leftMaxSum = int.MinValue;
         int sum = 0;
-        for(int l = startIndex;l<=midPoint;l++){
+        for(int l = startIndex;l<midPoint;l++){
             sum+=nums[l];
-            if(sum > leftMaxSum)
-                leftMaxSum = sum;
+            if(sum > leftMaxSum){
+               leftMaxSum = sum;     
+            }
         }
         return leftMaxSum;
     }
