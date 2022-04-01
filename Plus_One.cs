@@ -5,16 +5,28 @@ public class Plus_One{
         var test = digits.ToList();
         int addOne = 1;
         List<int> testOutput = new List<int>();
-        int[] returnValue = {};
-        foreach(var t in test){
-            if(t == 9){
+        int[] returnValue = new int[4];
+        for(int i = digits.Length-1;i >=0;i--){
+            if(digits[i] == 9){
                 testOutput.Add(0);
             }else{
-                testOutput.Add(t);
+                testOutput.Add(digits[i]+addOne);
                 addOne = 0;
             }
         }
-        var test_ = testOutput.ToArray();
+
+        if(addOne == 1 && testOutput.Count() == digits.Count())
+        {
+            testOutput.Add(addOne);
+            addOne = 0;
+        }
+        // int j=0;
+        // for(int i = testOutput.Count() - 1;i >=0;i--){
+        //     returnValue[j] = testOutput[i];
+        //     j++;
+        // }
+
+        var test_ = testOutput.ToArray().Reverse();
         
         // for(int i=0;i < digits.Length; i++){
         //     output += digits[i];

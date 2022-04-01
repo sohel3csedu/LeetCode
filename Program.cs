@@ -5,7 +5,7 @@ public class Program{
         Program program = new Program();
 
         //string _string = "   fly me   to   the moon  ";
-        int[] nums = {1,2,9};
+        int[] nums = {1,9,9,9};
         Plus_One plus_One = new Plus_One();
         plus_One.PlusOne(nums);
 
