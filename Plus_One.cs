@@ -1,11 +1,11 @@
 public class Plus_One{
-    
+    /*
     public int[] PlusOne(int[] digits) {
-        string output = string.Empty;
+        int[] output = new int[digits.Count()];
         var test = digits.ToList();
         int addOne = 1;
         List<int> testOutput = new List<int>();
-        int[] returnValue = new int[4];
+        int[] returnValue = {};
         for(int i = digits.Length-1;i >=0;i--){
             if(digits[i] == 9){
                 testOutput.Add(0);
@@ -28,6 +28,11 @@ public class Plus_One{
 
         var test_ = testOutput.ToArray().Reverse();
         
+        for(int j =0;j<test_.Count();j++){
+            Array.Resize(ref returnValue,test_.Count());
+            returnValue[j] = test_.Select(s => s).Where(p => p.Equals(j)).First();
+        }
+
         // for(int i=0;i < digits.Length; i++){
         //     output += digits[i];
         // }
@@ -45,4 +50,23 @@ public class Plus_One{
         //output = output1.ToString();
         return new int[10];
     }
+    */
+   public int[] PlusOne(int[] digits)
+        {
+            for (int i = digits.Length - 1; i >= 0; i--)
+            {
+                if (digits[i] == 9)
+                {
+                    digits[i] = 0;
+                }
+                else
+                {
+                    digits[i]++;
+                    return digits;
+                }
+            }
+            Array.Resize(ref digits,digits.Length+1);
+            digits[0] = 1;
+            return digits;
+        }
 }
