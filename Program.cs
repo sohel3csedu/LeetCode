@@ -3,7 +3,7 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        int[] nums = {9,6,4,2,3,5,7,0,8};
+        int[] nums = {4,3,2,7,8,2,3,1};
         FindDisappeared _findDisappeared = new FindDisappeared();
         var output = _findDisappeared.FindDisappearedNumbers(nums);
         Console.WriteLine(output);
