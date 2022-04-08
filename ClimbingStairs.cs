@@ -1,6 +1,12 @@
 public class ClimbingStairs{
     public int ClimbStairs(int n) {
-        int output = 0;
-        return output;
+        int oneStepValue = 1;
+        int twoStepValue = 1;
+        for(int i = 0;i<n-1;i++){
+            int temp = oneStepValue;
+            oneStepValue = oneStepValue+twoStepValue;
+            twoStepValue = temp;
+        }
+        return oneStepValue;
     }
 }
