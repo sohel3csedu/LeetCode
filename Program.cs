@@ -5,7 +5,7 @@ public class Program{
         Program program = new Program();
         ClimbingStairs _climbingStairs = new ClimbingStairs();
         
-        Console.WriteLine(""+_climbingStairs.ClimbStairs(5));
+        Console.WriteLine(""+_climbingStairs.ClimbStairs(4));
     }    
 
 }
