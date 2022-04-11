@@ -3,8 +3,8 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        int[] prices= {7,6,4,3,15};
-        // int[] prices= {7,1,5,3,6,4};
+        //int[] prices= {7,6,4,3,15};
+         int[] prices= {1,2,4,2,5,7,2,4,9,0,9};
         Stock _stock = new Stock();
         
         Console.WriteLine("Max profit is::"+_stock.MaxProfit(prices));
