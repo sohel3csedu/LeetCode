@@ -1,4 +1,5 @@
 public class Stock{
+    //in greedy algorithm try to think about how two pointer will be move.
     public int MaxProfit(int[] prices) {
         int buydayIndex = 0;
         int selldayIndex = 1;
