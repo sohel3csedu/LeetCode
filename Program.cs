@@ -4,10 +4,7 @@ public class Program{
     public static void Main(string[] args){
         Program program = new Program();
         
-        int[] nums= {-2, 0, 3, -5, 2, -1};
-        NumArray numArray = new NumArray(nums);
-        
-        Console.WriteLine("Summation is::"+numArray.SumRange(0,5));
+        Console.WriteLine("Summation is::"+CountingBits.CountBits(3));
     }    
 
 }
