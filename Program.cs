@@ -3,11 +3,11 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        //int[] prices= {7,6,4,3,15};
-         int[] prices= {1,2,4,2,5,7,2,4,9,0,9};
-        Stock _stock = new Stock();
         
-        Console.WriteLine("Max profit is::"+_stock.MaxProfit(prices));
+        int[] nums= {-2, 0, 3, -5, 2, -1};
+        NumArray numArray = new NumArray(nums);
+        
+        Console.WriteLine("Summation is::"+numArray.SumRange(0,5));
     }    
 
 }
