@@ -4,7 +4,7 @@ public class Program{
     public static void Main(string[] args){
         Program program = new Program();
         
-        Console.WriteLine("Summation is::"+CountingBits.CountBits(3));
+        Console.WriteLine("Summation is::"+CountingBits.CountBits(2));
     }    
 
 }
