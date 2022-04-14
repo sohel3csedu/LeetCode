@@ -3,9 +3,9 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        LinkedListCycle obj = new LinkedListCycle();
-        ListNode listNode = new ListNode(10);
-        Console.WriteLine("Summation is::"+obj.HasCycle(listNode));
+        MiddleOfLinkedList middleOfLinkedList =  new MiddleOfLinkedList();
+        Node headNode = new Node(10);
+        Console.WriteLine("Summation is::"+middleOfLinkedList.MiddleNode(headNode).val);
     }    
 
 }
