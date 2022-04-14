@@ -3,8 +3,9 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        
-        Console.WriteLine("Summation is::"+CountingBits.CountBits(2));
+        LinkedListCycle obj = new LinkedListCycle();
+        ListNode listNode = new ListNode(10);
+        Console.WriteLine("Summation is::"+obj.HasCycle(listNode));
     }    
 
 }
