@@ -1,6 +1,13 @@
 public class MiddleOfLinkedList{
     public Node MiddleNode(Node head) {
-        return new Node(0);
+        if(head == null)    return null;
+        Node fasterNode = head;
+        Node slowerNode = head;
+        while(fasterNode != null && fasterNode.next != null){
+            fasterNode = fasterNode.next.next;
+            slowerNode = slowerNode.next;
+        }
+        return slowerNode;
     }
 }
  public  class Node {
