@@ -1,5 +1,6 @@
 public class LinkedListCycle{
     public bool HasCycle(ListNode head) {
+        if(head == null) return false;
         HashSet<ListNode> listNodes = new HashSet<ListNode>();
         
         while(head.next != null){
