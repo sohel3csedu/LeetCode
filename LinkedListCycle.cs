@@ -12,7 +12,7 @@ public class LinkedListCycle{
         }
         return false;   
     }
-    */
+   
     public bool HasCycle(ListNode head){
         ListNode fastpointer = head;
         ListNode slowpointer = head;
@@ -32,5 +32,5 @@ public class LinkedListCycle{
           val = x;
           next = null;
       }
+       */
   }
- 
