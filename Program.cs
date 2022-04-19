@@ -3,9 +3,10 @@ using System.Collections;
 public class Program{
     public static void Main(string[] args){
         Program program = new Program();
-        MiddleOfLinkedList middleOfLinkedList =  new MiddleOfLinkedList();
-        Node headNode = new Node(10);
-        Console.WriteLine("Summation is::"+middleOfLinkedList.MiddleNode(headNode).val);
+        PalindromeLinkedList _palindromeLinkedList = new PalindromeLinkedList();
+        
+        Console.WriteLine("Summation is::"+_palindromeLinkedList.IsPalindrome());
+        
     }    
 
 }
