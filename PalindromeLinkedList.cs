@@ -2,12 +2,25 @@ public class PalindromeLinkedList{
     public bool IsPalindrome(ListNode head) {
         ListNode fastPointer = head;
         ListNode slowPointer = head;
-        while(fastPointer.next != null){
-            slowPointer = slowPointer.next;
+        while(fastPointer != null && fastPointer.next != null){
+            Console.WriteLine();
             fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
         }
-
-        return false;   
+        //after traversing slowpointer should be midpoint.
+        ListNode mid = slowPointer;
+        ListNode reversedLastHalf = ReverseList(mid);
+        
+        //now compare whether it's palindrome or not
+        ListNode left = head;
+        ListNode right = reversedLastHalf;
+        while(right != null){
+            if(left.val != right.val)
+                return false;
+            left = left.next;
+            right = right.next;    
+        }
+        return true;   
     }
     public ListNode ReverseList(ListNode head) {
         ListNode prev = null;
