@@ -1,27 +1,27 @@
 public class PalindromeLinkedList{
-    public bool IsPalindrome(ListNode head) {
-        ListNode fastPointer = head;
-        ListNode slowPointer = head;
-        while(fastPointer != null && fastPointer.next != null){
-            Console.WriteLine();
-            fastPointer = fastPointer.next.next;
-            slowPointer = slowPointer.next;
-        }
-        //after traversing slowpointer should be midpoint.
-        ListNode mid = slowPointer;
-        ListNode reversedLastHalf = ReverseList(mid);
+    // public bool IsPalindrome(ListNode head) {
+    //     ListNode fastPointer = head;
+    //     ListNode slowPointer = head;
+    //     while(fastPointer != null && fastPointer.next != null){
+    //         Console.WriteLine();
+    //         fastPointer = fastPointer.next.next;
+    //         slowPointer = slowPointer.next;
+    //     }
+    //     //after traversing slowpointer should be midpoint.
+    //     ListNode mid = slowPointer;
+    //     ListNode reversedLastHalf = ReverseList(mid);
         
-        //now compare whether it's palindrome or not
-        ListNode left = head;
-        ListNode right = reversedLastHalf;
-        while(right != null){
-            if(left.val != right.val)
-                return false;
-            left = left.next;
-            right = right.next;    
-        }
-        return true;   
-    }
+    //     //now compare whether it's palindrome or not
+    //     ListNode left = head;
+    //     ListNode right = reversedLastHalf;
+    //     while(right != null){
+    //         if(left.val != right.val)
+    //             return false;
+    //         left = left.next;
+    //         right = right.next;    
+    //     }
+    //     return true;   
+    // }
     public ListNode ReverseList(ListNode head) {
         ListNode prev = null;
         ListNode current = head;
@@ -32,6 +32,21 @@ public class PalindromeLinkedList{
             current = next;
         }
         return prev;
+    }
+    public bool IsPalindrome(ListNode head){
+        List<int> _list = new List<int>();
+        while(head != null){
+            _list.Add(head.val);
+            head = head.next;
+        }
+        int left = 0;
+        int right = _list.Count()-1;
+        while(left<=right){
+            if(_list.ElementAt(left) != _list.ElementAt(right))
+                return false;
+            left++;right--;    
+        }
+        return true;
     }
 }
 public class ListNode {
