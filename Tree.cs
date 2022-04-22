@@ -1,11 +1,36 @@
 public class Tree{
     public IList<double> AverageOfLevels(TreeNode root) {
-        IList<double> output = new List<double>();
-        Queue<TreeNode> _queue = new Queue<TreeNode>();
-        _queue.Enqueue(root);
+        List<KeyValuePair<int,double>> nodeValueWithLevel = new List<KeyValuePair<int, double>>();
+        int level = 0;
+        TreeLevel _root_with_level = new TreeLevel(root,0);
+        Queue<TreeLevel> _queue = new Queue<TreeLevel>();
+        _queue.Enqueue(_root_with_level);
         while(_queue.Count() > 0){
-            
+            TreeLevel treeWihtLevel = _queue.Dequeue();
+            level = Math.Max(level,treeWihtLevel.level);
+            if(treeWihtLevel.treeNode.left != null){
+                TreeLevel leftTreeWithLevel = new TreeLevel(treeWihtLevel.treeNode.left,level+1);
+                _queue.Enqueue(leftTreeWithLevel);
+            }   
+            if(treeWihtLevel.treeNode.right != null){
+                TreeLevel rightTreeWithLevel = new TreeLevel(treeWihtLevel.treeNode.right,level+1);
+                _queue.Enqueue(rightTreeWithLevel);
+            }  
+            Console.WriteLine($"Level: {treeWihtLevel.level}, node value: {treeWihtLevel.treeNode.val}");
+            nodeValueWithLevel.Add(new KeyValuePair<int, double>(treeWihtLevel.level,treeWihtLevel.treeNode.val));
         }
+        
+        return CalculateAvgByLevel(nodeValueWithLevel);
+    }
+
+    private IList<double> CalculateAvgByLevel(List<KeyValuePair<int, double>> nodeValueWithLevel)
+    {
+        IList<double> output = new List<double>();
+        foreach(int level in nodeValueWithLevel.Select(a => a.Key).Distinct() ){
+            double average = (double)nodeValueWithLevel.Where(b => b.Key == level).Select(a => a.Value).Sum()/(double)nodeValueWithLevel.Where(b => b.Key == level).Count();
+            output.Add(average);
+        }
+        return output;
     }
 }
 
@@ -17,6 +42,14 @@ public class TreeNode {
          this.val = val;
          this.left = left;
          this.right = right;
+     }
+ }
+ public class TreeLevel{
+     public TreeNode treeNode;
+     public int level;
+     public TreeLevel(TreeNode _node = null,int _level = 0){
+         this.treeNode = _node;
+         this.level = _level;
      }
  }
 
