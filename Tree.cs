@@ -48,7 +48,11 @@ public class Tree{
             if(currentnode.Item1.left == null && currentnode.Item1.right == null && currentnode.Item2 == targetSum) return true;
         }
         return false;    
-    }   
+    }
+    public int DiameterOfBinaryTree(TreeNode root) {
+        return 0;
+    }
+
 }
 
 public class TreeNode {
