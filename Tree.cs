@@ -33,6 +33,7 @@ public class Tree{
         return output;
     }
     public bool HasPathSum(TreeNode root, int targetSum, IList<TreeNode> paths) {
+        if(root == null)    return false;
         var _stack = new Stack<(TreeNode,int)>();
         _stack.Push((root,root.val));
         while(_stack.Count() > 0){
