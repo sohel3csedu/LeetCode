@@ -32,6 +32,22 @@ public class Tree{
         }
         return output;
     }
+    public bool HasPathSum(TreeNode root, int targetSum, IList<TreeNode> paths) {
+        var _stack = new Stack<(TreeNode,int)>();
+        _stack.Push((root,root.val));
+        while(_stack.Count() > 0){
+            var currentnode = _stack.Pop();
+            
+            if(currentnode.Item1.left != null){
+                _stack.Push((currentnode.Item1.left,currentnode.Item2+currentnode.Item1.left.val));
+            }
+            if(currentnode.Item1.right != null){
+                _stack.Push((currentnode.Item1.right,currentnode.Item2+currentnode.Item1.right.val));
+            }
+            if(currentnode.Item1.left == null && currentnode.Item1.right == null && currentnode.Item2 == targetSum) return true;
+        }
+        return false;    
+    }   
 }
 
 public class TreeNode {
