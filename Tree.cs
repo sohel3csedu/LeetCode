@@ -50,9 +50,47 @@ public class Tree{
         return false;    
     }
     public int DiameterOfBinaryTree(TreeNode root) {
-        return 0;
-    }
+        IList<TreeNode> pathFromNode = new List<TreeNode>();
+        IList<TreeNode> pathReverse = new List<TreeNode>();
+        Stack<TreeNode> _stack = new Stack<TreeNode>();
+        Stack<TreeNode> _stackReverse = new Stack<TreeNode>();
+        TreeNode reverseNode = null;
+        _stack.Push(root);
+        
+        while(_stack.Count() > 0){
+            TreeNode currentNode = _stack.Pop();
+            pathFromNode.Add(currentNode);
+            if(currentNode.left != null){
+                _stack.Push(currentNode.left);
+            }
+            if(currentNode.right != null){
+                _stack.Push(currentNode.right);
+            }
+            if(currentNode.left == null && currentNode.right == null)
+                reverseNode = currentNode;
 
+        }
+        _stackReverse.Push(reverseNode);
+
+        while(_stackReverse.Count() > 0){
+            TreeNode currentNode = _stack.Pop();
+            pathReverse.Add(currentNode);
+            if(currentNode.left != null){
+                _stack.Push(currentNode.left);
+            }
+            if(currentNode.right != null){
+                _stack.Push(currentNode.right);
+            }
+            if(currentNode.left == null && currentNode.right == null)
+                reverseNode = currentNode;
+
+        }
+        if(_stackReverse.Count() > _stack.Count()){
+            return _stackReverse.Count()-1;
+        }else
+            return _stack.Count()-1;
+
+    }
 }
 
 public class TreeNode {
