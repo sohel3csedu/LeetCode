@@ -167,6 +167,32 @@ public class Tree{
         }
         return max;
     }
+    public bool IsSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q != null) return false;
+        if(p != null && q == null) return false;
+        var firstTree = new Stack<TreeNode>();
+        var secondTree = new Stack<TreeNode>();
+        firstTree.Push(p);
+        secondTree.Push(q);
+        while(firstTree.Count > 0 && secondTree.Count > 0){
+            var currentNode_1 = firstTree.Pop();
+            var currentNode_2 = secondTree.Pop();
+            if(currentNode_1.val != currentNode_2.val)  return false;
+            if(currentNode_1.left != null && currentNode_1.left.val != null){
+                firstTree.Push(currentNode_1.left);
+            }
+            if(currentNode_1.right != null && currentNode_1.right.val != null){
+                firstTree.Push(currentNode_1.right);
+            }
+            if(currentNode_2.left != null && currentNode_2.left.val != null){
+                secondTree.Push(currentNode_2.left);
+            }
+            if(currentNode_2.right != null && currentNode_2.right.val != null){
+                secondTree.Push(currentNode_2.right);
+            }
+        }
+        return true;   
+    }
 }
 
 public class TreeNode {
