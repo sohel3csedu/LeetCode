@@ -49,12 +49,13 @@ public class Tree{
         }
         return false;    
     }
+    /*
     public int DiameterOfBinaryTree(TreeNode root) {
         IList<TreeNode> pathFromNode = new List<TreeNode>();
         IList<TreeNode> pathReverse = new List<TreeNode>();
         Stack<TreeNode> _stack = new Stack<TreeNode>();
-        Stack<TreeNode> _stackReverse = new Stack<TreeNode>();
-        TreeNode reverseNode = null;
+        
+        TreeNode reverseNode = new TreeNode(0,null,null);
         _stack.Push(root);
         
         while(_stack.Count() > 0){
@@ -66,13 +67,16 @@ public class Tree{
             if(currentNode.right != null){
                 _stack.Push(currentNode.right);
             }
-            if(currentNode.left == null && currentNode.right == null)
+            if(currentNode.left == null && currentNode.right == null){
                 reverseNode = currentNode;
-
+                break;
+                //Console.WriteLine(""+reverseNode.val);   
+            }
         }
+        Stack<TreeNode> _stackReverse = new Stack<TreeNode>();   
         _stackReverse.Push(reverseNode);
 
-        while(_stackReverse.Count() > 0){
+        while(_stackReverse != null && _stackReverse.Count() > 0){
             TreeNode currentNode = _stack.Pop();
             pathReverse.Add(currentNode);
             if(currentNode.left != null){
@@ -90,6 +94,82 @@ public class Tree{
         }else
             return _stack.Count()-1;
 
+    }
+    */
+    // public int DiameterOfBinaryTree(TreeNode root) {
+    //     List<KeyValuePair<TreeNode,int>> pathFromNode = new List<KeyValuePair<TreeNode, int>>();
+    //     List<KeyValuePair<TreeNode,int>> pathReverse = new List<KeyValuePair<TreeNode, int>>();
+    //     var _stack = new Stack<KeyValuePair<TreeNode,int>>();
+    //     var _stackReverse = new Stack<KeyValuePair<TreeNode,int>>();
+    //     int level = 0;
+    //     TreeNode reverseNode = new TreeNode();
+    //     _stack.Push(new KeyValuePair<TreeNode, int>(root,0));
+        
+    //     while(_stack.Count() > 0){
+    //         var currentNode = _stack.Pop();
+    //         pathFromNode.Add(currentNode);
+    //         level = Math.Max(level,currentNode.Value);
+    //         if(currentNode.Key.left != null){
+    //             _stack.Push(new KeyValuePair<TreeNode, int>(currentNode.Key.left,level+1));
+    //         }
+    //         if(currentNode.Key.right != null){
+    //             _stack.Push(new KeyValuePair<TreeNode, int>(currentNode.Key.right,level+1));
+    //         }
+    //         if(currentNode.Key.left == null && currentNode.Key.right == null)
+    //             reverseNode = currentNode;
+
+    //     }
+    //     _stackReverse.Push(reverseNode);
+
+    //     while(_stackReverse.Count() > 0){
+    //         TreeNode currentNode = _stack.Pop();
+    //         pathReverse.Add(currentNode);
+    //         if(currentNode.left != null){
+    //             _stack.Push(currentNode.left);
+    //         }
+    //         if(currentNode.right != null){
+    //             _stack.Push(currentNode.right);
+    //         }
+    //         if(currentNode.left == null && currentNode.right == null)
+    //             reverseNode = currentNode;
+
+    //     }
+    //     if(_stackReverse.Count() > _stack.Count()){
+    //         return _stackReverse.Count()-1;
+    //     }else
+    //         return _stack.Count()-1;
+
+    // }
+    public int DiameterOfBinaryTree(TreeNode root){
+        int max = 0;
+        if(root == null) return max;
+        var dict = new Dictionary<TreeNode,int>();
+        var _stack = new Stack<TreeNode>();
+        _stack.Push(root);
+        while(_stack.Count > 0){
+            TreeNode currentNode = _stack.Peek();
+            if(currentNode.left != null && !dict.ContainsKey(currentNode.left)){
+                _stack.Push(currentNode.left);
+            }
+            else if(currentNode.right != null && !dict.ContainsKey(currentNode.right)){
+                _stack.Push(currentNode.right);
+            }else{
+                //we reached in a leaf node
+                //now we will pop the stack and traverse in oppposite way and calculate the maximum paths
+                TreeNode topNode = _stack.Pop();
+                int leftNodeLength = topNode.left != null? dict[topNode.left]: 0;
+                int rightNodeLength = topNode.right != null ? dict[topNode.right]: 0;
+                //adding only leafnodes in the dictionary
+                dict.Add(topNode,Math.Max(leftNodeLength,rightNodeLength)+1);
+                int max_left_right = Math.Max(leftNodeLength,rightNodeLength);
+                max = Math.Max(max,max_left_right);
+            }
+        }
+        foreach(var val in dict){
+            Console.WriteLine("Node value "+val.Key.val);
+            Console.WriteLine("Path length "+val.Value);
+        }
+        return max;
     }
 }
 
