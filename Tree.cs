@@ -165,10 +165,6 @@ public class Tree{
                 max = Math.Max(max,max_left_right);
             }
         }
-        foreach(var val in dict){
-            Console.WriteLine("Node value "+val.Key.val);
-            Console.WriteLine("Path length "+val.Value);
-        }
         return max;
     }
 }
