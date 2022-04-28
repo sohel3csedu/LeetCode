@@ -167,6 +167,16 @@ public class Tree{
         }
         return max;
     }
+    public bool IsSameTree(TreeNode p, TreeNode q){
+        if(p == null && q == null) return true;
+        if(p == null || q == null) return false;
+        if(IsSameTree(p.left,q.left) && IsSameTree(p.right,q.right) && p.val == q.val){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    /*
     public bool IsSameTree(TreeNode p, TreeNode q) {
         if(p == null && q != null) return false;
         if(p != null && q == null) return false;
@@ -193,6 +203,7 @@ public class Tree{
         }
         return true;   
     }
+    */
 }
 
 public class TreeNode {
