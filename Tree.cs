@@ -140,6 +140,7 @@ public class Tree{
     //         return _stack.Count()-1;
 
     // }
+    /*
     public int DiameterOfBinaryTree(TreeNode root){
         int max = 0;
         if(root == null) return max;
@@ -167,6 +168,7 @@ public class Tree{
         }
         return max;
     }
+    
     public bool IsSameTree(TreeNode p, TreeNode q){
         if(p == null && q == null) return true;
         if(p == null || q == null) return false;
@@ -175,6 +177,26 @@ public class Tree{
         }else{
             return false;
         }
+    }
+    */
+    public TreeNode MergeTrees(TreeNode root1, TreeNode root2){
+     
+        TreeNode mergedTree = new TreeNode();
+        if(root1 == null && root2 == null) return null;   
+
+        var FirstTreeStack = new Stack<TreeNode>();
+        var SecondTreeStack = new Stack<TreeNode>();
+        FirstTreeStack.Push(root1);
+        SecondTreeStack.Push(root2);
+        while(FirstTreeStack.Count > 0 || SecondTreeStack.Count > 0){
+            TreeNode currentNode_1 = null;
+            TreeNode currentNode_2 = null;
+            if(FirstTreeStack.Count > 0)
+                currentNode_1 = FirstTreeStack.Pop();
+            if(SecondTreeStack.Count > 0)
+                currentNode_2 = SecondTreeStack.Pop();
+        }
+        
     }
     /*
     public bool IsSameTree(TreeNode p, TreeNode q) {
