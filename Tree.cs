@@ -181,21 +181,19 @@ public class Tree{
     */
     public TreeNode MergeTrees(TreeNode root1, TreeNode root2){
      
-        TreeNode mergedTree = new TreeNode();
+        
         if(root1 == null && root2 == null) return null;   
+        int leftValue = 0;
+        int rightValue = 0;
+        if(root1 != null)
+            leftValue = root1.val;
+        if(root2 != null)
+            rightValue = root2.val;
+        TreeNode mergedTree = new TreeNode(leftValue+rightValue);
+        mergedTree.left = MergeTrees(root1 != null && root1.left != null ? root1.left : null,root2 != null && root2.left != null ? root2.left: null);
+        mergedTree.right = MergeTrees(root1!=null && root1.right != null ? root1.right : null,root2 !=null && root2.right != null ? root2.right: null);
 
-        var FirstTreeStack = new Stack<TreeNode>();
-        var SecondTreeStack = new Stack<TreeNode>();
-        FirstTreeStack.Push(root1);
-        SecondTreeStack.Push(root2);
-        while(FirstTreeStack.Count > 0 || SecondTreeStack.Count > 0){
-            TreeNode currentNode_1 = null;
-            TreeNode currentNode_2 = null;
-            if(FirstTreeStack.Count > 0)
-                currentNode_1 = FirstTreeStack.Pop();
-            if(SecondTreeStack.Count > 0)
-                currentNode_2 = SecondTreeStack.Pop();
-        }
+        return mergedTree;
         
     }
     /*
